@@ -6,6 +6,7 @@ export enum PORTATA {
 }
 
 export interface Recipe {
+  id: string
   name: string
   time: number
   description: string
@@ -13,8 +14,10 @@ export interface Recipe {
   portata: PORTATA
 }
 
+export type maxTimeFilters = 15 | 30 | 60
+
 export type Filter = {
   textual?: string
-  maxTime?: number
+  maxTime?: maxTimeFilters
   portata?: PORTATA
 }

@@ -36,7 +36,7 @@
               "
             >
               <span class="block">A better way to</span>
-              <span class="block text-indigo-400">browse recipes</span>
+              <span class="block text-red-400">browse recipes</span>
             </h1>
             <p
               class="
@@ -47,9 +47,7 @@
                 xl:text-xl
               "
             >
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              Lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat.
+              Le ricette di una vita a portata di mano
             </p>
             <div class="mt-10 sm:mt-12">
               <form action="#" class="sm:max-w-xl sm:mx-auto lg:mx-0">
@@ -72,19 +70,16 @@
                         focus:outline-none
                         focus:ring-2
                         focus:ring-offset-2
-                        focus:ring-indigo-300
+                        focus:ring-red-300
                         focus:ring-offset-gray-900
                       "
                       @input="newSearchText"
                     />
                   </div>
                   <!-- <div class="mt-3 sm:mt-0 sm:ml-3">
-                          <button type="submit" class="block w-full py-3 px-4 rounded-md shadow bg-indigo-500 text-white font-medium hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900">Cerca ricetta</button>
+                          <button type="submit" class="block w-full py-3 px-4 rounded-md shadow bg-red-500 text-white font-medium hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-300 focus:ring-offset-gray-900">Cerca ricetta</button>
                         </div> -->
                 </div>
-                <p class="mt-3 text-sm text-gray-300 sm:mt-4">
-                  Cerca tra le mille fighissime e curatissime ricette di Sara
-                </p>
               </form>
             </div>
           </div>

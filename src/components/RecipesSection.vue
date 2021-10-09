@@ -30,6 +30,7 @@
 
   const recipes: Recipe[] = [
     {
+      id: '123',
       name: 'Carbonara alla Lele',
       time: 15,
       description: 'buona',
@@ -37,6 +38,7 @@
       portata: PORTATA.PRIMO,
     },
     {
+      id: '456',
       name: 'Pasta ca sassa',
       time: 30,
       description: 'semplice',
@@ -58,11 +60,6 @@
         lg:px-8 lg:max-w-7xl
       "
     >
-      <h2
-        class="text-base font-semibold tracking-wider text-indigo-600 uppercase"
-      >
-        Apri filtri
-      </h2>
       <p
         class="
           mt-2
@@ -80,7 +77,12 @@
       </p>
       <div class="mt-12">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          <div v-for="(recipe, i) in filteredRecipes" :key="i" class="pt-4">
+          <div
+            v-for="(recipe, i) in filteredRecipes"
+            :key="i"
+            class="pt-4 cursor-pointer"
+            @click="$router.push({ name: 'recipe', params: { id: recipe.id } })"
+          >
             <div class="flow-root bg-red-50 rounded-lg px-4 pb-6">
               <div class="-mt-6">
                 <div>
