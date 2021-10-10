@@ -10,7 +10,9 @@
 </script>
 
 <template>
-  <div class="pt-10 bg-gray-900 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
+  <div
+    class="pt-10 bg-gray-900 sm:pt-16 lg:pt-8 pb-4 lg:pb-14 lg:overflow-hidden"
+  >
     <div class="mx-auto max-w-7xl lg:px-8">
       <div class="lg:grid lg:grid-cols-2 lg:gap-8">
         <div
@@ -84,7 +86,7 @@
             </div>
           </div>
         </div>
-        <div class="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
+        <div class="mt-12 -mb-16 sm:-mb-48 lg:m-0 hidden md:block lg:relative">
           <div
             class="
               mx-auto

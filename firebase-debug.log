@@ -1,0 +1,58 @@
+[debug] [2021-10-10T11:25:29.784Z] ----------------------------------------------------------------------
+[debug] [2021-10-10T11:25:29.786Z] Command:       /home/andrea/.nvm/versions/node/v14.15.1/bin/node /home/andrea/.nvm/versions/node/v14.15.1/bin/firebase deploy --only hosting:ricettedisara
+[debug] [2021-10-10T11:25:29.786Z] CLI Version:   9.20.0
+[debug] [2021-10-10T11:25:29.786Z] Platform:      linux
+[debug] [2021-10-10T11:25:29.787Z] Node Version:  v14.15.1
+[debug] [2021-10-10T11:25:29.788Z] Time:          Sun Oct 10 2021 13:25:29 GMT+0200 (Central European Summer Time)
+[debug] [2021-10-10T11:25:29.788Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-10T11:25:29.861Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-10T11:25:29.862Z] > authorizing via signed-in user (drew.taglia@gmail.com)
+[debug] [2021-10-10T11:25:29.862Z] [iam] checking project ricettedisara-c5323 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-10-10T11:25:29.864Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-10-10T11:25:29.864Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-10T11:25:30.167Z] <<< HTTP RESPONSE 200 {"date":"Sun, 10 Oct 2021 11:25:30 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-10T11:25:30.187Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/ricettedisara-c5323:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-10-10T11:25:31.080Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 10 Oct 2021 11:25:31 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=652","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-10T11:25:31.084Z] > refreshing access token with scopes: []
+[debug] [2021-10-10T11:25:31.085Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-10T11:25:31.539Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Sun, 10 Oct 2021 11:25:31 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-10T11:25:31.562Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ricettedisara-c5323 [none]
+[debug] [2021-10-10T11:25:32.193Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ricettedisara-c5323 200
+[debug] [2021-10-10T11:25:32.193Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ricettedisara-c5323 {"projectId":"ricettedisara-c5323","projectNumber":"1001955189623","displayName":"ricettedisara","name":"projects/ricettedisara-c5323","resources":{"hostingSite":"ricettedisara-c5323","storageBucket":"ricettedisara-c5323.appspot.com","locationId":"europe-west"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'ricettedisara-c5323'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-10-10T11:25:32.196Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-10-10T11:25:32.196Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-10T11:25:32.658Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Sun, 10 Oct 2021 11:25:32 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-10T11:25:32.673Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/ricettedisara/versions  
+ {"config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-10-10T11:25:34.256Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 10 Oct 2021 11:25:34 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[ricettedisara]: beginning deploy... 
+[info] i  hosting[ricettedisara]: found 5 files in dist 
+[debug] [2021-10-10T11:25:34.278Z] > refreshing access token with scopes: []
+[debug] [2021-10-10T11:25:34.278Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-10T11:25:34.279Z] [hosting] hash cache [ZGlzdA] stored for 5 files
+[debug] [2021-10-10T11:25:34.279Z] [hosting][hash queue][FINAL] {"max":11,"min":3,"avg":5,"active":0,"complete":5,"success":5,"errored":0,"retried":0,"total":5,"elapsed":14}
+[debug] [2021-10-10T11:25:35.043Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Sun, 10 Oct 2021 11:25:34 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-10T11:25:35.053Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/ricettedisara/versions/0e381350607da9fa:populateFiles [none]
+[debug] [2021-10-10T11:25:35.054Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/ricettedisara/versions/0e381350607da9fa:populateFiles {"files":{"/index.html":"b5565e586b0684ee963967f1f2c6de82ae44c7d9e6892a643dea5129ed045556","/favicon.ico":"e0535b2041a7a1721cdec785c903980d41fdf0d810a4ea9726b6ffd1371bbc28","/assets/index.11548f38.css":"414212de838da67b6eb3fab24658250a0cb5c31df9ffedd0d5f78015ec6fd21e","/assets/index.7b101913.js":"59e4c233293048fbf93b8f18a9b7545a576e5c33e3396a39661fc96cc93c8a3e","/assets/vendor.5a1b5482.js":"a863f7338d808088993903ffc2b364033e29b8640fbd633a4ff7cc4f5c61f9c3"}}
+[debug] [2021-10-10T11:25:36.305Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/ricettedisara/versions/0e381350607da9fa:populateFiles 200
+[debug] [2021-10-10T11:25:36.305Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/ricettedisara/versions/0e381350607da9fa:populateFiles {"uploadRequiredHashes":["a863f7338d808088993903ffc2b364033e29b8640fbd633a4ff7cc4f5c61f9c3","b5565e586b0684ee963967f1f2c6de82ae44c7d9e6892a643dea5129ed045556","414212de838da67b6eb3fab24658250a0cb5c31df9ffedd0d5f78015ec6fd21e","59e4c233293048fbf93b8f18a9b7545a576e5c33e3396a39661fc96cc93c8a3e"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/ricettedisara/versions/0e381350607da9fa/files"}
+[debug] [2021-10-10T11:25:36.306Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/ricettedisara/versions/0e381350607da9fa/files/a863f7338d808088993903ffc2b364033e29b8640fbd633a4ff7cc4f5c61f9c3 [none]
+[debug] [2021-10-10T11:25:36.306Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/ricettedisara/versions/0e381350607da9fa/files/a863f7338d808088993903ffc2b364033e29b8640fbd633a4ff7cc4f5c61f9c3 [stream]
+[debug] [2021-10-10T11:25:36.307Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/ricettedisara/versions/0e381350607da9fa/files/b5565e586b0684ee963967f1f2c6de82ae44c7d9e6892a643dea5129ed045556 [none]
+[debug] [2021-10-10T11:25:36.308Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/ricettedisara/versions/0e381350607da9fa/files/b5565e586b0684ee963967f1f2c6de82ae44c7d9e6892a643dea5129ed045556 [stream]
+[debug] [2021-10-10T11:25:36.309Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/ricettedisara/versions/0e381350607da9fa/files/414212de838da67b6eb3fab24658250a0cb5c31df9ffedd0d5f78015ec6fd21e [none]
+[debug] [2021-10-10T11:25:36.310Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/ricettedisara/versions/0e381350607da9fa/files/414212de838da67b6eb3fab24658250a0cb5c31df9ffedd0d5f78015ec6fd21e [stream]
+[debug] [2021-10-10T11:25:36.311Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/ricettedisara/versions/0e381350607da9fa/files/59e4c233293048fbf93b8f18a9b7545a576e5c33e3396a39661fc96cc93c8a3e [none]
+[debug] [2021-10-10T11:25:36.311Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/ricettedisara/versions/0e381350607da9fa/files/59e4c233293048fbf93b8f18a9b7545a576e5c33e3396a39661fc96cc93c8a3e [stream]
+[debug] [2021-10-10T11:25:36.312Z] [hosting][populate queue][FINAL] {"max":2029,"min":2029,"avg":2029,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":2035}
+[debug] [2021-10-10T11:25:36.312Z] [hosting] uploads queued: 4

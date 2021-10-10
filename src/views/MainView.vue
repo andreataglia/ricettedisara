@@ -5,7 +5,7 @@
   import { Filter } from '../types/types'
   import CustomMenu from '../components/CustomMenu.vue'
 
-  const activeFilter = ref<Filter>({ maxTime: 20 })
+  const activeFilter = ref<Filter>({})
 
   const searchTextUpdated = (text: string) => {
     activeFilter.value.textual = text
