@@ -20,7 +20,18 @@
     let ret = recipes
     if (!props.activeFilters) return ret
     if (props.activeFilters.textual) {
-      ret = ret.filter((r) => r.name.includes(props.activeFilters!.textual!))
+      //   return rows.filter(option =>
+      //   // Restituisce le sole label che contengono tutte le occorrenze del termine di ricerca splittato per " " (es. "mar ros" mostra solo le righe contenenti sia mar che ros all'interno)
+      //   this.search.toLowerCase().split(' ').every(searchToken =>
+      //     option.label.toLowerCase().split(' ').find(labelToken => labelToken.includes(searchToken))
+      //   )
+      // );
+      const searchChunks = props
+        .activeFilters!.textual!.toLowerCase()
+        .split(' ')
+      ret = ret.filter((r) =>
+        searchChunks.every((chunk) => r.name.toLowerCase().includes(chunk))
+      )
     }
     if (props.activeFilters.maxTime && props.activeFilters.maxTime > 0) {
       ret = ret.filter((r) => r.time <= props.activeFilters!.maxTime!)
@@ -49,7 +60,7 @@
 </script>
 
 <template>
-  <div class="block bg-white py-16 sm:py-24 lg:py-32">
+  <div class="block bg-white py-8 sm:py-16 lg:py-16">
     <div
       class="
         mx-auto
