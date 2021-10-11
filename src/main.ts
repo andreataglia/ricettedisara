@@ -1,25 +1,27 @@
 import { createApp } from 'vue'
+import { routes } from './router'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import './index.css'
-import { routes } from './router'
 import App from './App.vue'
+// Import the functions you need from the SDKs you need
+import { initializeApp } from 'firebase/app'
+import {
+  collection,
+  getFirestore,
+  enableIndexedDbPersistence,
+} from 'firebase/firestore'
+import { key, store } from './store'
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
 })
 
-// 5. Create and mount the root instance.
 const app = createApp(App)
-// Make sure to _use_ the router instance to make the
-// whole app router-aware.
+
+app.use(store, key)
 app.use(router)
-
 app.mount('#app')
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app'
-import { collection, getFirestore } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -34,4 +36,17 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig)
 export const db = getFirestore()
+enableIndexedDbPersistence(db).catch((err) => {
+  if (err.code == 'failed-precondition') {
+    // Multiple tabs open, persistence can only be enabled
+    // in one tab at a a time.
+    // ...
+    console.error('db persistance failed-precondition')
+  } else if (err.code == 'unimplemented') {
+    // The current browser does not support all of the
+    // features required to enable persistence
+    // ...
+    console.error('db persistance unimplemented')
+  }
+})
 export const recipesCollection = collection(db, 'recipes')

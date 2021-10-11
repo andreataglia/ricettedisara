@@ -1,31 +1,31 @@
 <script setup lang="ts">
   import { getDocs, query } from 'firebase/firestore'
-  import { computed } from 'vue'
+  import { computed, onMounted, reactive, ref } from 'vue'
   import { recipesCollection } from '../main'
+  import { useStore } from '../store'
   import { Recipe, PORTATA, Filter } from '../types/types'
+
+  const store = useStore()
 
   const props = defineProps<{
     activeFilters?: Filter
   }>()
 
-  // Create a query against the collection.
-  // const q = query(recipesCollection)
-  // const querySnapshot = await getDocs(q)
-  // querySnapshot.forEach((doc) => {
-  //   // doc.data() is never undefined for query doc snapshots
-  //   console.log(doc.id, ' => ', doc.data())
-  // })
+  onMounted(async () => {
+    const q = query(recipesCollection)
+    const querySnapshot = await getDocs(q)
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, ' => ', doc.data())
+      store.commit('addRecipe', { ...doc.data(), id: doc.id } as Recipe)
+    })
+    recipesStillLoading.value = false
+  })
 
   const filteredRecipes = computed<Recipe[]>(() => {
-    let ret = recipes
+    let ret = store.state.recipes
     if (!props.activeFilters) return ret
     if (props.activeFilters.textual) {
-      //   return rows.filter(option =>
-      //   // Restituisce le sole label che contengono tutte le occorrenze del termine di ricerca splittato per " " (es. "mar ros" mostra solo le righe contenenti sia mar che ros all'interno)
-      //   this.search.toLowerCase().split(' ').every(searchToken =>
-      //     option.label.toLowerCase().split(' ').find(labelToken => labelToken.includes(searchToken))
-      //   )
-      // );
       const searchChunks = props
         .activeFilters!.textual!.toLowerCase()
         .split(' ')
@@ -39,24 +39,7 @@
     return ret
   })
 
-  const recipes: Recipe[] = [
-    {
-      id: '123',
-      name: 'Carbonara alla Lele',
-      time: 15,
-      description: 'buona',
-      ingredients: 'uova, pasta',
-      portata: PORTATA.PRIMO,
-    },
-    {
-      id: '456',
-      name: 'Pasta ca sassa',
-      time: 30,
-      description: 'semplice',
-      ingredients: 'sassa, pasta',
-      portata: PORTATA.PRIMO,
-    },
-  ]
+  const recipesStillLoading = ref(true)
 </script>
 
 <template>
@@ -87,7 +70,33 @@
         Stai filtrando per: {{ props.activeFilters }}
       </p>
       <div class="mt-12">
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          v-if="recipesStillLoading"
+          class="
+            border border-red-300
+            shadow
+            rounded-md
+            p-4
+            max-w-sm
+            w-full
+            mx-auto
+          "
+        >
+          <div class="animate-pulse flex space-x-4">
+            <div class="rounded-full bg-red-400 h-12 w-12"></div>
+            <div class="flex-1 space-y-4 py-1">
+              <div class="h-4 bg-red-400 rounded w-3/4"></div>
+              <div class="space-y-2">
+                <div class="h-4 bg-red-400 rounded"></div>
+                <div class="h-4 bg-red-400 rounded w-5/6"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          v-else
+          class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+        >
           <div
             v-for="(recipe, i) in filteredRecipes"
             :key="i"

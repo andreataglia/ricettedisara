@@ -10,8 +10,10 @@ export interface Recipe {
   name: string
   time: number
   description: string
-  ingredients: string
+  ingredients: string[]
   portata: PORTATA
+  instructions: string
+  images: string[]
 }
 
 export type maxTimeFilters = 15 | 30 | 60
