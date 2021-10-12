@@ -1,8 +1,8 @@
-export enum PORTATA {
-  PRIMO,
-  SECONDO,
-  CONTORNO,
-  DOLCE,
+export enum Portata {
+  PRIMO = 'Primo',
+  SECONDO = 'Secondo',
+  CONTORNO = 'Contorno',
+  DOLCE = 'Dolce',
 }
 
 export interface Recipe {
@@ -11,15 +11,19 @@ export interface Recipe {
   time: number
   description: string
   ingredients: string[]
-  portata: PORTATA
+  portata: Portata
   instructions: string
   images: string[]
 }
 
-export type maxTimeFilters = 15 | 30 | 60
+export enum MaxTimeFilters {
+  MAX15 = '15',
+  MAX30 = '30',
+  MAX60 = '60',
+}
 
 export type Filter = {
   textual?: string
-  maxTime?: maxTimeFilters
-  portata?: PORTATA
+  maxTime?: MaxTimeFilters
+  portata?: Portata
 }

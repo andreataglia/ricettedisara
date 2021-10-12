@@ -2,7 +2,7 @@
   import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
   import { FilterIcon, XIcon } from '@heroicons/vue/outline'
   import { ref } from 'vue'
-  import { Filter, maxTimeFilters } from '../types/types'
+  import { Filter, Portata, MaxTimeFilters } from '../types/types'
 
   const activeFilter = ref<Filter>({})
 
@@ -36,16 +36,16 @@
         aria-label="Global"
       >
         <div class="flex items-center flex-1">
-          <div class="flex items-center justify-between w-full md:w-auto">
+          <div class="flex items-center justify-between w-full">
             <a href="#">
               <span class="sr-only">Workflow</span>
               <img
                 class="h-8 w-auto sm:h-10"
-                src="https://tailwindui.com/img/logos/workflow-mark-red-500.svg"
+                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                 alt=""
               />
             </a>
-            <div class="-mr-2 flex items-center md:hidden">
+            <div class="-mr-2 flex items-center">
               <PopoverButton
                 class="
                   bg-gray-900
@@ -62,18 +62,12 @@
                   focus:ring-white
                 "
               >
-                <span class="sr-only">Open main menu</span>
+                <span class="text-gray-400 font-bold mr-4 hidden md:block">
+                  Filtri
+                </span>
                 <FilterIcon class="h-6 w-6" aria-hidden="true" />
               </PopoverButton>
             </div>
-          </div>
-          <div class="hidden space-x-8 md:flex md:ml-10">
-            <a
-              v-for="item in [1, 2]"
-              :key="item"
-              class="text-base font-medium text-white hover:text-gray-300"
-              >{{ item }}</a
-            >
           </div>
         </div>
       </nav>
@@ -114,7 +108,7 @@
             <div>
               <img
                 class="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-mark-red-600.svg"
+                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                 alt=""
               />
             </div>
@@ -145,42 +139,25 @@
               <div
                 class="
                   block
+                  space-x-2
                   px-3
                   py-1
                   rounded-md
                   text-base
                   font-medium
                   text-gray-900
-                  hover:bg-gray-50
                 "
               >
                 <div class="text-gray-400 text-sm py-1">Per tempo max</div>
                 <span
-                  class="hover:underline"
+                  v-for="time in MaxTimeFilters"
+                  class="hover:underline cursor-pointer"
                   :class="{
                     underline:
-                      activeFilter.maxTime && activeFilter.maxTime === 15,
+                      activeFilter.maxTime && activeFilter.maxTime === time,
                   }"
-                  @click="changeFilter('maxTime', 15)"
-                  >15 min</span
-                >,
-                <span
-                  class="hover:underline"
-                  :class="{
-                    underline:
-                      activeFilter.maxTime && activeFilter.maxTime === 30,
-                  }"
-                  @click="changeFilter('maxTime', 30)"
-                  >30 min</span
-                >,
-                <span
-                  class="hover:underline"
-                  :class="{
-                    underline:
-                      activeFilter.maxTime && activeFilter.maxTime === 60,
-                  }"
-                  @click="changeFilter('maxTime', 0)"
-                  >60+ min</span
+                  @click="changeFilter('maxTime', time)"
+                  >{{ time }}m</span
                 >
               </div>
               <div
@@ -192,11 +169,19 @@
                   text-base
                   font-medium
                   text-gray-900
-                  hover:bg-gray-50
+                  space-x-2
                 "
               >
                 <div class="text-gray-400 text-sm py-1">Per portata</div>
-                Primo, Secondo, Contorno, Dolce
+                <span
+                  v-for="portata of Portata"
+                  class="hover:underline cursor-pointer"
+                  :class="{
+                    underline: activeFilter.portata === portata,
+                  }"
+                  @click="changeFilter('portata', portata)"
+                  >{{ portata }}</span
+                >
               </div>
             </div>
             <div class="mt-6 px-5">
@@ -230,7 +215,7 @@
                   bg-gray-100
                   text-gray-700
                   font-medium
-                  hover:bg-gray-700
+                  hover:bg-gray-200
                 "
                 >Chiudi</PopoverButton
               >

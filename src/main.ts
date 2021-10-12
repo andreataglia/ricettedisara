@@ -12,15 +12,18 @@ import {
 } from 'firebase/firestore'
 import { key, store } from './store'
 
+const app = createApp(App)
+
+// store
+app.use(store, key)
+
+// router
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
 })
-
-const app = createApp(App)
-
-app.use(store, key)
 app.use(router)
+
 app.mount('#app')
 
 // Your web app's Firebase configuration
@@ -36,17 +39,17 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig)
 export const db = getFirestore()
-enableIndexedDbPersistence(db).catch((err) => {
-  if (err.code == 'failed-precondition') {
-    // Multiple tabs open, persistence can only be enabled
-    // in one tab at a a time.
-    // ...
-    console.error('db persistance failed-precondition')
-  } else if (err.code == 'unimplemented') {
-    // The current browser does not support all of the
-    // features required to enable persistence
-    // ...
-    console.error('db persistance unimplemented')
-  }
-})
+// enableIndexedDbPersistence(db).catch((err) => {
+//   if (err.code == 'failed-precondition') {
+//     // Multiple tabs open, persistence can only be enabled
+//     // in one tab at a a time.
+//     // ...
+//     console.error('db persistance failed-precondition')
+//   } else if (err.code == 'unimplemented') {
+//     // The current browser does not support all of the
+//     // features required to enable persistence
+//     // ...
+//     console.error('db persistance unimplemented')
+//   }
+// })
 export const recipesCollection = collection(db, 'recipes')

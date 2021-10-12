@@ -3,7 +3,7 @@
   import { computed, onMounted, reactive, ref } from 'vue'
   import { recipesCollection } from '../main'
   import { useStore } from '../store'
-  import { Recipe, PORTATA, Filter } from '../types/types'
+  import { Recipe, Filter } from '../types/types'
 
   const store = useStore()
 
@@ -33,10 +33,24 @@
         searchChunks.every((chunk) => r.name.toLowerCase().includes(chunk))
       )
     }
-    if (props.activeFilters.maxTime && props.activeFilters.maxTime > 0) {
-      ret = ret.filter((r) => r.time <= props.activeFilters!.maxTime!)
+    if (
+      props.activeFilters.maxTime &&
+      parseInt(props.activeFilters.maxTime) > 0
+    ) {
+      ret = ret.filter((r) => r.time <= parseInt(props.activeFilters!.maxTime!))
+    }
+    if (props.activeFilters.portata) {
+      ret = ret.filter((r) => r.portata === props.activeFilters?.portata)
     }
     return ret
+  })
+
+  const areFiltersEmpty = computed<boolean>(() => {
+    return (
+      !props.activeFilters?.maxTime &&
+      !props.activeFilters?.portata &&
+      !props.activeFilters?.textual
+    )
   })
 
   const recipesStillLoading = ref(true)
@@ -66,8 +80,68 @@
       >
         Ricette
       </p>
-      <p class="mt-5 max-w-prose mx-auto text-xl text-gray-500">
-        Stai filtrando per: {{ props.activeFilters }}
+      <p
+        class="
+          mt-5
+          max-w-prose
+          mx-auto
+          text-xl text-gray-500
+          flex
+          justify-center
+          space-x-2
+        "
+      >
+        <span class="text-sm" v-show="areFiltersEmpty"
+          >Nessun filtro attivo</span
+        >
+        <span
+          v-show="props.activeFilters?.maxTime"
+          class="
+            inline-flex
+            items-center
+            px-3
+            py-0.5
+            rounded-full
+            text-sm
+            font-medium
+            bg-gray-100
+            text-gray-800
+          "
+        >
+          max {{ props.activeFilters?.maxTime }}m
+        </span>
+        <span
+          v-show="props.activeFilters?.textual"
+          class="
+            inline-flex
+            items-center
+            px-3
+            py-0.5
+            rounded-full
+            text-sm
+            font-medium
+            bg-gray-100
+            text-gray-800
+          "
+        >
+          contiene "{{ props.activeFilters?.textual }}"
+        </span>
+        <span
+          v-show="props.activeFilters?.portata"
+          class="
+            inline-flex
+            items-center
+            px-3
+            py-0.5
+            rounded-full
+            text-sm
+            font-medium
+            bg-gray-100
+            text-gray-800
+          "
+        >
+          è un {{ props.activeFilters?.portata?.toLowerCase() }}
+        </span>
       </p>
       <div class="mt-12">
         <div
